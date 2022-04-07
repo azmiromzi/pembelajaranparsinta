@@ -32,5 +32,5 @@ use Illuminate\Support\Facades\Route;
 // Route::post('/tasks', [TaskController::class, 'store']);
 Route::resource('tasks', TaskController::class);
 
-Route::get('users', [UserController::class, 'index']);
+Route::get('users', [UserController::class, 'index'])->name('users.index');
 Route::get('users/{user:username}', [UserController::class, 'show'])->name('users.show');
