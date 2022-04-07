@@ -15,17 +15,17 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-       collect([
-        [
-            'name' => 'Azmi Romzi Hoesaini',
-            'email' => 'azmi@gmail.com',
-            'password' => bcrypt('password'),
-            'email_verified_at' => now(),
+    //    collect([
+    //     [
+    //         'name' => 'Azmi Romzi Hoesaini',
+    //         'email' => 'azmi@gmail.com',
+    //         'password' => bcrypt('password'),
+    //         'email_verified_at' => now(),
 
-        ]
-       ])->each(function($user){
-           User::create($user);
-       });
+    //     ]
+    //    ])->each(function($user){
+    //        User::create($user);
+    //    });
 
        User::factory(10)->create();
     }

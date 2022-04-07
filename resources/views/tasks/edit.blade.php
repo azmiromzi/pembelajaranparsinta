@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header text-center">Edit Data</div>
                 <div class="card-body">
-                    <form action="/tasks/{{ $task->id }}" method="post" class="d-flex">
+                    <form action="{{ route('tasks.update', $task->id) }}" method="post" class="d-flex">
                         @method('put')
                         @csrf
                         <input type="text" name="list" value="{{ $task->list }}" autofocus class="form-control">
