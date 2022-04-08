@@ -19,8 +19,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', [HomeController::class, 'index']);
-// Route::get('/profile/{identifier}', [ProfileInformationController::class, '__invoke']);
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/profile', [ProfileInformationController::class, '__invoke']);
 
 // Route::get('/contact', [ContactController::class, 'create']);
 // Route::post('/contact', [ContactController::class, 'store']);

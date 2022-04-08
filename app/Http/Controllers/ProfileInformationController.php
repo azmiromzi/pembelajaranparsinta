@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 
 class ProfileInformationController extends Controller
 {
-    public function __invoke(Request $request, $identifier)
+    public function __invoke(Request $request)
 
     {
 
-        return view('profile', ['username' => $identifier]);
+        return view('profile');
     }
 }
