@@ -12,7 +12,12 @@ class TaskController extends Controller
 {
     public function index()
     {
-        return view('tasks.index', ['tasks' => Task::orderBy('id', 'desc')->get()]);
+
+        return view('tasks.index', [
+            'tasks' => Task::orderBy('id', 'desc')->get(),
+             'task'=> new Task,
+             'submit' => 'create'
+            ]);
     }
 
 
@@ -30,7 +35,10 @@ class TaskController extends Controller
 
     public function edit(Task $task)
     {
-        return view('tasks.edit', ['task' => $task]);
+        return view('tasks.edit', [
+            'task' => $task,
+            'submit' => 'update'
+        ]);
         // dd($task);
     }
 
