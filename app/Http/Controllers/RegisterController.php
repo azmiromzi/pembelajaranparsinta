@@ -15,17 +15,14 @@ class RegisterController extends Controller
     }
     public function store(RegisterRequest $request)
     {
+        $attributes = $request->all();
+
+        $attributes['password'] = Hash::make($request->password);
+
+        User::create($attributes);
 
 
-        User::create([
-            'email' => $request->email,
-            'username' => $request->username,
-            'name' => $request->name,
-            'password' => Hash::make($request->password),
-        ]);
 
-        session()->flash('success', 'you are register');
-
-        return redirect('/');
+        return redirect('/')->with('success', 'thank you, you are now registerd');
     }
 }
