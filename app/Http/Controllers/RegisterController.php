@@ -24,6 +24,8 @@ class RegisterController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        session()->flash('success', 'you are register');
+
         return redirect('/');
     }
 }
