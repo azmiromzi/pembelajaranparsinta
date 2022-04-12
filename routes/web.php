@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileInformationController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TaskController;
@@ -28,6 +29,10 @@ Route::get('/profile', [ProfileInformationController::class, '__invoke']);
 
 Route::get('register', [RegisterController::class, 'create'])->name('register');
 Route::post('register', [RegisterController::class, 'store'])->name('register');
+
+
+Route::get('login', [LoginController::class, 'create'])->name('login');
+Route::post('login', [LoginController::class, 'store'])->name('login');
 // Route::get('/tasks/{id}/edit', [TaskController::class, 'edit']);
 // Route::put('/tasks/{id}', [TaskController::class, 'update']);
 // Route::delete('/tasks/{id}', [TaskController::class, 'destroy']);
