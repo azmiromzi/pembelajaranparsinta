@@ -35,11 +35,11 @@ class TaskController extends Controller
 
     public function edit(Task $task)
     {
+        // dd($task);
         return view('tasks.edit', [
             'task' => $task,
             'submit' => 'update'
         ]);
-        // dd($task);
     }
 
     public function update($id, TaskRequest $request)

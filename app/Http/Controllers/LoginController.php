@@ -17,22 +17,25 @@ class LoginController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+      $validasi =  $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required']
         ]);
 
-        $user = User::whereEmail($request->email)->first();
-
-        if ($user)
-        {
-            if(Hash::check($request->password, $user->password))
-            {
-                Auth::login($user);
-
-                return redirect('/')->with('success', 'you are login');
-            }
+        if(Auth::attempt($validasi)) {
+            return redirect('/')->with('success', 'you are login');
         }
+
+
+        // if ($user)
+        // {
+        //     if(Hash::check($request->password, $user->password))
+        //     {
+        //         Auth::login($user);
+
+        //         return redirect('/')->with('success', 'you are login');
+        //     }
+        // }
         throw ValidationException::withMessages([
             'email' => 'your email wrong'
         ]);
