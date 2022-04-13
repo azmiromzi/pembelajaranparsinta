@@ -24,21 +24,27 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/profile', [ProfileInformationController::class, '__invoke']);
 
+Route::resource('tasks', TaskController::class)->middleware('auth');
 // Route::get('/contact', [ContactController::class, 'create']);
 // Route::post('/contact', [ContactController::class, 'store']);
+Route::get('users', [UserController::class, 'index'])->name('users.index');
+Route::get('users/{user:username}', [UserController::class, 'show'])->name('users.show');
 
-Route::get('register', [RegisterController::class, 'create'])->name('register');
-Route::post('register', [RegisterController::class, 'store'])->name('register');
+
+Route::middleware('guest')->group(function() {
+
+    Route::get('register', [RegisterController::class, 'create'])->name('register');
+    Route::post('register', [RegisterController::class, 'store'])->name('register');
+
+    Route::get('login', [LoginController::class, 'create'])->name('login');
+    Route::post('login', [LoginController::class, 'store'])->name('login');
+});
 
 
-Route::get('login', [LoginController::class, 'create'])->name('login');
-Route::post('login', [LoginController::class, 'store'])->name('login');
+
 // Route::get('/tasks/{id}/edit', [TaskController::class, 'edit']);
 // Route::put('/tasks/{id}', [TaskController::class, 'update']);
 // Route::delete('/tasks/{id}', [TaskController::class, 'destroy']);
 // Route::get('/tasks', [TaskController::class, 'index']);
 // Route::post('/tasks', [TaskController::class, 'store']);
-Route::resource('tasks', TaskController::class);
 
-Route::get('users', [UserController::class, 'index'])->name('users.index');
-Route::get('users/{user:username}', [UserController::class, 'show'])->name('users.show');

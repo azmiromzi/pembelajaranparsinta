@@ -22,8 +22,10 @@ class LoginController extends Controller
             'password' => ['required']
         ]);
 
+
+
         if(Auth::attempt($validasi)) {
-            return redirect('/')->with('success', 'you are login');
+            return redirect('/')->with('success', "hallo " . Auth::user()->name . " welcome to your account");
         }
 
 
