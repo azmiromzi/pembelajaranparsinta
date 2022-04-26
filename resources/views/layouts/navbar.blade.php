@@ -52,7 +52,12 @@
                 <li><a class="dropdown-item" href="#">Action</a></li>
                 <li><a class="dropdown-item" href="#">Another action</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li class="">
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button type="submit" class="btn btn-success dropdown-item">logout</button>
+                    </form>
+                </li>
             </ul>
 
             </li>
